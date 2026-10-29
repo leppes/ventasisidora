@@ -9,9 +9,9 @@ const NEGOCIO = {
   whatsapp: "56961918400",
   telefonoVisible: "+56 9 6191 8400",
   correo: "esrceagarrido@gmail.com",
-  // PENDIENTE: confirmar horario (el reel de Instagram no se lee bien)
+  // Horas sacadas del reel de Instagram del 13/10. PENDIENTE: confirmar qué días atiende
   horario: [
-    { dias: "Lunes a sábado", horas: "10:00 – 14:00 y 15:30 – 19:30" },
+    { dias: "Lunes a sábado", horas: "10:00 – 14:00 y 14:45 – 19:30" },
   ],
   instagram: "isidora_pisos",
   despacho: "Despacho gratis en San Pedro de la Paz",

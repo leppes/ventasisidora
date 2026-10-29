@@ -65,10 +65,19 @@ function cargarMapa() {
 }
 
 // Catálogo
+// La tarjeta muestra la foto instalada y, al pasar el mouse, la plancha
+function fotosTarjeta(p) {
+  if (!p.imagen) return "";
+  const principal = `<img src="${p.ambiente ?? p.imagen}" alt="${p.nombre}" loading="lazy">`;
+  const plancha = p.ambiente ? `<img class="producto__plancha" src="${p.imagen}" alt="" loading="lazy">` : "";
+  return principal + plancha;
+}
+
 function tarjetaProducto(p) {
   return `
     <button class="producto" data-id="${p.id}">
       <div class="producto__imagen textura ${p.textura}">
+        ${fotosTarjeta(p)}
         ${p.oferta ? '<span class="etiqueta etiqueta--oscura producto__oferta">Oferta</span>' : ""}
       </div>
       <div class="producto__info">
@@ -100,6 +109,24 @@ function cargarFiltros() {
 }
 
 // Ficha de producto
+function galeriaFicha(p) {
+  if (!p.imagen) return `<div class="ficha__imagen textura ${p.textura}"></div>`;
+  const fotos = [
+    p.ambiente && { src: p.ambiente, texto: "Instalado" },
+    { src: p.imagen, texto: "Plancha" },
+  ].filter(Boolean);
+  const miniaturas = fotos.length > 1
+    ? `<div class="ficha__miniaturas">${fotos
+        .map((f, i) => `<button type="button" data-foto="${f.src}" aria-pressed="${i === 0}"><img src="${f.src}" alt=""><span>${f.texto}</span></button>`)
+        .join("")}</div>`
+    : "";
+  return `
+    <div class="ficha__imagen ficha__galeria">
+      <img class="ficha__foto" src="${fotos[0].src}" alt="${p.nombre}">
+      ${miniaturas}
+    </div>`;
+}
+
 function abrirFicha(id) {
   const p = PRODUCTOS.find((x) => x.id === id);
   if (!p) return;
@@ -110,7 +137,7 @@ function abrirFicha(id) {
   );
   const ficha = document.querySelector(".ficha");
   ficha.querySelector(".ficha__contenido").innerHTML = `
-    <div class="ficha__imagen textura ${p.textura}"></div>
+    ${galeriaFicha(p)}
     <div class="ficha__info">
       <span class="producto__categoria">${nombreCategoria(p.categoria)}</span>
       <h3>${p.nombre}</h3>
@@ -129,6 +156,13 @@ function prepararFicha() {
     if (tarjeta) abrirFicha(tarjeta.dataset.id);
   });
   ficha.querySelector(".ficha__cerrar").addEventListener("click", () => ficha.close());
+  // Cambiar entre la foto instalada y la plancha
+  ficha.addEventListener("click", (e) => {
+    const miniatura = e.target.closest("[data-foto]");
+    if (!miniatura) return;
+    ficha.querySelector(".ficha__foto").src = miniatura.dataset.foto;
+    ficha.querySelectorAll("[data-foto]").forEach((b) => b.setAttribute("aria-pressed", b === miniatura));
+  });
   // Cerrar al hacer clic fuera del contenido
   ficha.addEventListener("click", (e) => {
     if (e.target === ficha) ficha.close();
