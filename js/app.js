@@ -20,7 +20,7 @@ function textoPrecio(producto) {
 
 // Datos del negocio en la página
 function cargarDatosNegocio() {
-  const mensajeGeneral = `Hola ${NEGOCIO.nombre}, vengo de la página web y quiero cotizar.`;
+  const mensajeGeneral = "Hola, vengo de la página web y quiero cotizar.";
   document.querySelectorAll("[data-whatsapp]").forEach((a) => {
     a.href = linkWhatsapp(mensajeGeneral);
     a.target = "_blank";
@@ -42,7 +42,7 @@ function cargarDatosNegocio() {
   correo.textContent = NEGOCIO.correo;
   document.querySelector("[data-boton-correo]").href = linkCorreo(
     "Consulta desde la página web",
-    `Hola ${NEGOCIO.nombre},\n\nQuiero hacer una consulta sobre:\n\n\nMi nombre:\nMi teléfono:\nComuna:\n`
+    `Hola,\n\nQuiero hacer una consulta sobre:\n\n\nMi nombre:\nMi teléfono:\nComuna:\n`
   );
   document.querySelectorAll("[data-como-llegar]").forEach((a) => {
     a.href = NEGOCIO.comoLlegar;
@@ -130,10 +130,10 @@ function galeriaFicha(p) {
 function abrirFicha(id) {
   const p = PRODUCTOS.find((x) => x.id === id);
   if (!p) return;
-  const mensaje = `Hola ${NEGOCIO.nombre}, me interesa: ${p.nombre}. ¿Me pueden cotizar?`;
+  const mensaje = `Hola, me interesa: ${p.nombre}. ¿Me pueden cotizar?`;
   const correo = linkCorreo(
     `Cotización: ${p.nombre}`,
-    `Hola ${NEGOCIO.nombre},\n\nMe interesa cotizar: ${p.nombre}.\nCantidad o m² aproximados:\n\nMi nombre:\nMi teléfono:\nComuna:\n`
+    `Hola,\n\nMe interesa cotizar: ${p.nombre}.\nCantidad o m² aproximados:\n\nMi nombre:\nMi teléfono:\nComuna:\n`
   );
   const ficha = document.querySelector(".ficha");
   ficha.querySelector(".ficha__contenido").innerHTML = `
@@ -201,7 +201,7 @@ function prepararCalculadora() {
       <strong>${cantidad} ${plural}</strong>
       Superficie: ${superficie.toFixed(2).replace(".", ",")} m² (+10% por cortes)${total}`;
 
-    const mensaje = `Hola ${NEGOCIO.nombre}, quiero cotizar ${cantidad} ${plural} de ${p.nombre} para ${superficie.toFixed(2).replace(".", ",")} m².`;
+    const mensaje = `Hola, quiero cotizar ${cantidad} ${plural} de ${p.nombre} para ${superficie.toFixed(2).replace(".", ",")} m².`;
     botonCotizar.href = linkWhatsapp(mensaje);
     botonCotizar.target = "_blank";
     botonCotizar.rel = "noopener";
