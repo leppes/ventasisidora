@@ -350,6 +350,9 @@ h1, h2, h3 { font-family: var(--fuente-titulo); line-height: 1.15; font-weight: 
 .mapa-respaldo__pin svg { width: 30px; height: 30px; }
 
 .footer { background: var(--negro); color: #8d928b; padding: 28px 0; text-align: center; font-size: .9rem; }
+/* Discreto: es para Rodrigo, no para los clientes */
+.footer__admin { display: inline-block; margin-top: 8px; color: #8d928b; font-size: .8rem; }
+.footer__admin:hover { color: var(--lima); }
 
 /* WhatsApp flotante */
 .whatsapp-flotante {
