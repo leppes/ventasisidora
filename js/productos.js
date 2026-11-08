@@ -1,3 +1,5 @@
+// Catálogo de respaldo: la página carga los productos desde Supabase (app.js) y usa esta lista
+// solo si la base de datos no responde. Los cambios de productos se hacen en el panel.
 // Catálogo armado con lo que se ve en Instagram.
 // PENDIENTE: confirmar nombres de los modelos PVC (en Instagram no aparecen) y precios de vinílico,
 // flotante y accesorios. precio: null muestra "Consultar".
@@ -64,49 +66,50 @@ const PRODUCTOS = [
     imagen: "img/productos/gris-piedra.webp", ambiente: "img/productos/gris-piedra-ambiente.webp",
     detalles: ["Gris con textura de piedra", "Plancha 1,22 x 2,44 m", "Espesor 3 mm", "Impermeable", "Adhesivo de regalo"],
   },
-  // PENDIENTE: confirmar cuáles fotos de madera son vinílico y cuáles flotante, y los m² por caja
+  // Rendimiento confirmado en la reunión: vinílico 2,22 m² por caja y flotante 1,9 m² por caja.
+  // PENDIENTE: son 5 flotantes y 5 vinílicos; falta saber cuáles fotos son de cada tipo
   {
     id: "vinilico-roble-claro", categoria: "vinilico", nombre: "Piso Vinílico Roble Claro",
-    textura: "madera-clara", precio: null, unidad: "caja", m2: 2.2,
+    textura: "madera-clara", precio: null, unidad: "caja", m2: 2.22,
     imagen: "img/productos/vinilico-roble-claro.jpg",
     detalles: ["Roble claro natural", "Espesor 5 y 5,5 mm", "Resistente al agua"],
     destacado: true, oferta: true,
   },
   {
     id: "flotante-roble-moca", categoria: "flotante", nombre: "Piso Flotante Roble Moca 8 mm",
-    textura: "madera-oscura", precio: null, unidad: "caja", m2: 2.4,
+    textura: "madera-oscura", precio: null, unidad: "caja", m2: 1.9,
     imagen: "img/productos/flotante-roble-moca.jpg",
     detalles: ["Café grisáceo", "Espesor 8 mm", "Espuma de regalo", "Sistema click"],
     destacado: true, oferta: true,
   },
   {
     id: "flotante-rustico-miel", categoria: "flotante", nombre: "Piso Flotante Rústico Miel 8 mm",
-    textura: "madera-miel", precio: null, unidad: "caja", m2: 2.4,
+    textura: "madera-miel", precio: null, unidad: "caja", m2: 1.9,
     imagen: "img/productos/flotante-rustico-miel.jpg",
     detalles: ["Miel con nudos y vetas marcadas", "Espesor 8 mm", "Espuma de regalo", "Sistema click"],
     oferta: true,
   },
   {
     id: "flotante-roble-caramelo", categoria: "flotante", nombre: "Piso Flotante Roble Caramelo 8 mm",
-    textura: "madera-miel", precio: null, unidad: "caja", m2: 2.4,
+    textura: "madera-miel", precio: null, unidad: "caja", m2: 1.9,
     imagen: "img/productos/flotante-roble-caramelo.jpg",
     detalles: ["Café cálido", "Espesor 8 mm", "Espuma de regalo", "Sistema click"],
   },
   {
     id: "flotante-gris-humo", categoria: "flotante", nombre: "Piso Flotante Gris Humo 8 mm",
-    textura: "madera-gris", precio: null, unidad: "caja", m2: 2.4,
+    textura: "madera-gris", precio: null, unidad: "caja", m2: 1.9,
     imagen: "img/productos/flotante-gris-humo.jpg",
     detalles: ["Gris oscuro", "Espesor 8 mm", "Espuma de regalo", "Sistema click"],
   },
   {
     id: "flotante-gris-arena", categoria: "flotante", nombre: "Piso Flotante Gris Arena 8 mm",
-    textura: "madera-gris", precio: null, unidad: "caja", m2: 2.4,
+    textura: "madera-gris", precio: null, unidad: "caja", m2: 1.9,
     imagen: "img/productos/flotante-gris-arena.jpg",
     detalles: ["Gris con tono beige", "Espesor 8 mm", "Espuma de regalo", "Sistema click"],
   },
   {
     id: "flotante-gris-perla", categoria: "flotante", nombre: "Piso Flotante Gris Perla 8 mm",
-    textura: "madera-gris", precio: null, unidad: "caja", m2: 2.4,
+    textura: "madera-gris", precio: null, unidad: "caja", m2: 1.9,
     imagen: "img/productos/flotante-gris-perla.jpg",
     detalles: ["Gris claro", "Espesor 8 mm", "Espuma de regalo", "Sistema click"],
   },
